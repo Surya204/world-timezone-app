@@ -12,7 +12,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	</http:request-config>
 	<flow name="world-demo-apiFlow" doc:id="e368758e-bad6-4997-aa95-8b35a23cae9c" >
 		<http:listener doc:name="Listener" doc:id="5cec2100-c804-497d-a47f-3695b262279f" config-ref="HTTP_Listener_config" path="/{region}/{city}"/>
-		<logger level="INFO" doc:name="Logger" doc:id="e9ae664b-ab01-4989-858d-d924a9ca9622" message="#[payload]"/>
 		<http:request method="GET" doc:name="Request" doc:id="eba403e0-22bd-4476-bdad-18d964434efc" config-ref="HTTP_Request_configuration" path="/{region}/{city}">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
@@ -21,5 +20,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	region : attributes.uriParams.region
 }]]]></http:uri-params>
 		</http:request>
+		<logger level="INFO" doc:name="Logger" doc:id="e9ae664b-ab01-4989-858d-d924a9ca9622" message="#[payload]"/>
 	</flow>
 </mule>
